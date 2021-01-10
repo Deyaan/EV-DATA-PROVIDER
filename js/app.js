@@ -14,8 +14,12 @@
   submitbtn.addEventListener('click', (e) =>{
     database = firebase.database();
     e.preventDefault();
-    alert('submitted!');
 
+    if(id.value===""){
+      alert('Enter your Id');
+    }
+    else{
+    alert('submitted!');
     database.ref('/Admin/' + id.value).set({
       Name : fname.value,
       Email : email.value,
@@ -23,6 +27,7 @@
       Data : data.value,
       Machine :machine.value
     });
+    }
   });
   
   //Update Data
@@ -30,8 +35,12 @@
     database = firebase.database();
     const rootRef = database.ref('Admin');
     e.preventDefault();
+    
+    if(id.value===""){
+      alert('Enter your Id');
+    }
+    else{
     alert('updated!!!');
-
     const newData = {
       Name : fname.value,
       Email : email.value,
@@ -40,4 +49,5 @@
       Machine : machine.value
     }
     rootRef.child(id.value).update(newData);
-  });
+   }
+});
